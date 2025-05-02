@@ -4,12 +4,12 @@ import type { FC } from 'react';
 import { useState } from 'react';
 import { refactorCode, type RefactorCodeInput } from '@/ai/flows/refactor-code';
 import { CodeEditor } from '@/components/codepad/CodeEditor';
-import { PreviewPane } from '@/components/codepad/PreviewPane';
+// import { PreviewPane } from '@/components/codepad/PreviewPane'; // Removed PreviewPane import
 import { RefactorControls } from '@/components/codepad/RefactorControls';
 import { Toolbar } from '@/components/codepad/Toolbar';
 import { Toaster } from "@/components/ui/toaster";
 import { useToast } from "@/hooks/use-toast";
-import { Separator } from '@/components/ui/separator'; // Keep separator import if needed elsewhere, but removed from layout
+// import { Separator } from '@/components/ui/separator'; // Keep separator import if needed elsewhere, but removed from layout
 
 const CodePad: FC = () => {
   const [code, setCode] = useState<string>('<!DOCTYPE html>\n<html>\n<head>\n  <title>My Page</title>\n  <style>\n    body { font-family: sans-serif; background-color: #f0f0f0; color: #333; }\n    h1 { color: navy; }\n  </style>\n</head>\n<body>\n  <h1>Welcome!</h1>\n  <p>Edit the code and see the preview update.</p>\n  <script>\n    console.log("Hello from the script!");\n    // You can add more JS here\n  </script>\n</body>\n</html>');
@@ -59,17 +59,12 @@ const CodePad: FC = () => {
         isLoading={isLoading}
       />
       {/* Removed middle separator */}
-      <div className="flex flex-1 overflow-hidden p-4 gap-4">
+      <div className="flex flex-1 overflow-hidden p-4"> {/* Removed gap-4 */}
         <div className="flex-1 flex flex-col min-w-0">
           <h2 className="text-sm font-medium mb-2 text-muted-foreground px-1">Editor</h2> {/* Subtle heading */}
           <CodeEditor code={code} setCode={setCode} />
         </div>
-        {/* Using a subtle border div instead of Separator component */}
-        <div className="w-px bg-border"></div>
-        <div className="flex-1 flex flex-col min-w-0">
-          <h2 className="text-sm font-medium mb-2 text-muted-foreground px-1">Preview</h2> {/* Subtle heading */}
-          <PreviewPane code={code} />
-        </div>
+        {/* Removed the vertical separator div and the PreviewPane container */}
       </div>
       <Toaster />
     </div>

@@ -91,17 +91,9 @@ body {
 }
 
 /* Custom styles for CodePad - Updated */
-.editor-pane, .preview-pane {
-  @apply h-full overflow-auto rounded-lg shadow-inner;
-}
-
 .editor-pane {
-   @apply p-4 bg-secondary; /* Consistent padding and bg */
-}
-
-.preview-pane {
-  /* Removed padding here as iframe handles its own content area */
-   @apply bg-background; /* Use main background for iframe container */
+  @apply h-full overflow-auto rounded-lg shadow-inner;
+  @apply p-4 bg-secondary; /* Consistent padding and bg */
 }
 
 
@@ -109,15 +101,6 @@ body {
   @apply font-mono text-sm leading-relaxed resize-none border-0 focus:ring-0 focus:outline-none bg-transparent w-full h-full caret-foreground; /* Use foreground for caret */
 }
 
-/* Preview pane pre styling is less relevant now with iframe, but kept for fallback/other uses */
-.preview-pane pre {
-  @apply font-mono text-sm leading-relaxed whitespace-pre-wrap break-words p-4; /* Add padding if using pre */
-}
-
-/* Style iframe container */
-.preview-pane iframe {
-  @apply bg-white; /* Rendered content often assumes white bg */
-}
 
 /* Optional: Style scrollbars to match theme */
 ::-webkit-scrollbar {
