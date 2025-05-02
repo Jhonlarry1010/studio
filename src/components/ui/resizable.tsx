@@ -1,8 +1,9 @@
+
 "use client"
 
 import * as React from "react"
-import { GripVertical } from "lucide-react"
-import { ImperativePanelGroupHandle, PanelGroup } from "react-resizable-panels"
+import { GripVertical } from "lucide-react" // Corrected import
+import { ImperativePanelGroupHandle, PanelGroup, PanelResizeHandle } from "react-resizable-panels" // Added PanelResizeHandle
 
 import { cn } from "@/lib/utils"
 
@@ -27,22 +28,30 @@ const ResizablePanel = React.lazy(async () => {
 })
 ResizablePanel.displayName = "ResizablePanel"
 
+
 const ResizableHandle = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentProps<"div"> & {
+  React.ElementRef<typeof PanelResizeHandle>, // Corrected ElementRef type
+  React.ComponentPropsWithoutRef<typeof PanelResizeHandle> & { // Corrected ComponentPropsWithoutRef type
     withHandle?: boolean
-    disabled?: boolean
   }
->(({ className, withHandle, disabled, ...props }, ref) => (
-  <div
+>(({ className, withHandle, ...props }, ref) => (
+  <PanelResizeHandle // Use PanelResizeHandle from the library
+    ref={ref}
     className={cn(
       "relative flex w-px items-center justify-center bg-border after:absolute after:inset-y-0 after:left-1/2 after:w-1 after:-translate-x-1/2 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-1 data-[panel-group-direction=vertical]:h-px data-[panel-group-direction=vertical]:w-full data-[panel-group-direction=vertical]:after:left-0 data-[panel-group-direction=vertical]:after:h-1 data-[panel-group-direction=vertical]:after:w-full data-[panel-group-direction=vertical]:after:-translate-y-1/2 data-[panel-group-direction=vertical]:after:translate-x-0 [&[data-panel-group-direction=vertical]>div]:rotate-90",
-      disabled && "cursor-not-allowed",
+      props.disabled && "cursor-not-allowed", // Access disabled from props
       className
     )}
     {...props}
-    ref={ref}
   >
     {withHandle && (
       <div className="z-10 flex h-4 w-3 items-center justify-center rounded-sm border bg-border">
-        <GripVertical className="h-2.5 w-2.5"
+        <GripVertical className="h-2.5 w-2.5" />
+      </div>
+    )}
+  </PanelResizeHandle>
+))
+ResizableHandle.displayName = "ResizableHandle" // Corrected displayName
+
+// Export the corrected components
+export { ResizablePanelGroup, ResizablePanel, ResizableHandle };

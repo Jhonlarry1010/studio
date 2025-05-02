@@ -1,13 +1,14 @@
+
 import type { FC } from 'react';
-import { Save, Undo, Redo, Settings, ExternalLink } from 'lucide-react'; // Added ExternalLink
+import { Save, Undo, Redo, Settings } from 'lucide-react'; // Removed ExternalLink
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 interface ToolbarProps {
-  onPreview: () => void; // Added onPreview prop
+  // Removed onPreview prop
 }
 
-export const Toolbar: FC<ToolbarProps> = ({ onPreview }) => {
+export const Toolbar: FC<ToolbarProps> = (/* Removed onPreview */) => {
   // Placeholder actions
   const handleSave = () => console.log('Save clicked');
   const handleUndo = () => console.log('Undo clicked');
@@ -18,7 +19,7 @@ export const Toolbar: FC<ToolbarProps> = ({ onPreview }) => {
     { label: 'Save', icon: Save, action: handleSave },
     { label: 'Undo', icon: Undo, action: handleUndo },
     { label: 'Redo', icon: Redo, action: handleRedo },
-    { label: 'Preview', icon: ExternalLink, action: onPreview }, // Added Preview action
+    // Removed Preview action
     { label: 'Settings', icon: Settings, action: handleSettings },
   ];
 
