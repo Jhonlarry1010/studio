@@ -16,17 +16,22 @@ export const RefactorControls: FC<RefactorControlsProps> = ({ prompt, setPrompt,
   };
 
   return (
-    <div className="flex items-center p-2 space-x-2 bg-secondary">
+    <div className="flex items-center p-2 space-x-2 bg-secondary border-b border-border"> {/* Added border */}
       <Input
         type="text"
         placeholder="Enter refactor prompt (e.g., 'Add type annotations')"
         value={prompt}
         onChange={handlePromptChange}
-        className="flex-1 focus-visible:ring-accent"
+        className="flex-1 focus-visible:ring-ring bg-input border-border" // Use theme variables
         aria-label="Refactor Prompt"
         disabled={isLoading}
       />
-      <Button onClick={onRefactor} disabled={isLoading} variant="default" className="bg-accent text-accent-foreground hover:bg-accent/90">
+      <Button
+        onClick={onRefactor}
+        disabled={isLoading}
+        variant="default" // Use default variant for primary action
+        className="focus-visible:ring-ring" // Ensure ring is visible
+        >
         {isLoading ? (
           <Loader2 className="h-5 w-5 animate-spin" />
         ) : (

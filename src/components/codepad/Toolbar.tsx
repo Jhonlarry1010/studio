@@ -18,15 +18,15 @@ export const Toolbar: FC = () => {
   ];
 
   return (
-    <header className="flex items-center justify-between p-2 bg-secondary shadow-md">
-      <h1 className="text-xl font-bold text-primary px-2">CodePad</h1>
-      <div className="flex items-center space-x-2">
+    <header className="flex items-center justify-between p-2 bg-secondary border-b border-border shadow-sm"> {/* Use secondary bg, add border */}
+      <h1 className="text-xl font-semibold text-foreground px-2">CodePad</h1> {/* Use foreground for title */}
+      <div className="flex items-center space-x-1"> {/* Reduced space */}
         <TooltipProvider>
           {iconActions.map(({ label, icon: Icon, action }) => (
             <Tooltip key={label}>
               <TooltipTrigger asChild>
-                <Button variant="ghost" size="icon" onClick={action} aria-label={label}>
-                  <Icon className="h-5 w-5 text-foreground hover:text-accent" />
+                <Button variant="ghost" size="icon" onClick={action} aria-label={label} className="h-8 w-8 text-muted-foreground hover:text-foreground hover:bg-accent"> {/* Adjust size and colors */}
+                  <Icon className="h-4 w-4" />
                 </Button>
               </TooltipTrigger>
               <TooltipContent>

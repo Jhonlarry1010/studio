@@ -12,12 +12,12 @@ export const CodeEditor: FC<CodeEditorProps> = ({ code, setCode }) => {
   };
 
   return (
-    <div className="editor-pane flex-1">
+    <div className="editor-pane flex-1 bg-secondary rounded-lg shadow-inner"> {/* Use secondary background */}
       <Textarea
         value={code}
         onChange={handleChange}
         placeholder="Enter your code here..."
-        className="editor-pane textarea focus-visible:ring-accent"
+        className="editor-pane textarea focus-visible:ring-ring" // Use theme ring color
         aria-label="Code Editor"
       />
     </div>
