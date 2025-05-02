@@ -2,9 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Remove explicit body font-family to let Tailwind handle it */
+/*
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
+*/
 
 @layer base {
   :root {
@@ -87,6 +90,8 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+    /* Ensure font-sans from Tailwind is applied */
+    @apply font-sans;
   }
 }
 
