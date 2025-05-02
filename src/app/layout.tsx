@@ -20,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark"> {/* Apply dark class to html tag */}
+    <html lang="en" className="dark">
       <body className={cn('font-sans antialiased', inter.variable)}>
         {children}
         <Toaster /> {/* Add Toaster component here */}
